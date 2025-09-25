@@ -12,9 +12,30 @@ macro_rules! test_pattern_matcher {
             }
 
             #[test]
-            fn no_match() {
+            fn no_match_smaller_pattern() {
+                let text = "longer text";
+                let pattern = "pa";
+                assert_eq!($matcher(text, pattern), vec![]);
+            }
+
+            #[test]
+            fn no_match_exact_len() {
                 let text = "piernik";
                 let pattern = "wiatrak";
+                assert_eq!($matcher(text, pattern), vec![]);
+            }
+
+            #[test]
+            fn no_match_existing_letters() {
+                let text = "the quick brown fox jumps over the lazy dog";
+                let pattern = "wizard";
+                assert_eq!($matcher(text, pattern), vec![]);
+            }
+
+            #[test]
+            fn no_match_with_prefix() {
+                let text = "the quick brown fox jumps over the lazy dog";
+                let pattern = "fops";
                 assert_eq!($matcher(text, pattern), vec![]);
             }
 
