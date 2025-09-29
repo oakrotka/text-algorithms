@@ -60,8 +60,55 @@ mod z_array_tests {
     #[test]
     fn no_match() {
         let text = "the five boxing wizards jump quickly";
-        let expected = [vec![text.len()], vec![0; text.len() - 1]].concat();
-        assert_eq!(compute_z_array(text), expected);
+        let expected = vec![0; text.len() - 1];
+
+        let z = compute_z_array(text);
+        assert_eq!(z[1..], expected);
+    }
+
+    #[test]
+    fn simple_match() {
+        let text = "regret";
+        let expected = vec![0, 0, 2, 0, 0];
+
+        let z = compute_z_array(text);
+        assert_eq!(z[1..], expected);
+    }
+
+    #[test]
+    fn simple_matches() {
+        let text = "proappropriation";
+        let expected = vec![0, 0, 0, 1, 3, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0];
+
+        let z = compute_z_array(text);
+        assert_eq!(z[1..], expected);
+    }
+
+    #[test]
+    fn out_box_match() {
+        let text = "ABACABABA";
+        let expected = vec![0, 1, 0, 3, 0, 3, 0, 1];
+
+        let z = compute_z_array(text);
+        assert_eq!(z[1..], expected);
+    }
+
+    #[test]
+    fn in_box_match() {
+        let text = "riroriro";
+        let expected = vec![0, 1, 0, 4, 0, 1, 0];
+
+        let z = compute_z_array(text);
+        assert_eq!(z[1..], expected);
+    }
+
+    #[test]
+    fn scream() {
+        let text = "AAAAAAA";
+        let expected = vec![6, 5, 4, 3, 2, 1];
+
+        let z = compute_z_array(text);
+        assert_eq!(z[1..], expected);
     }
 }
 
