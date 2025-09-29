@@ -1,3 +1,4 @@
+// Common tests for functions doing pattern matching
 macro_rules! test_pattern_matcher {
     ($matcher:ident) => {
         #[cfg(test)]

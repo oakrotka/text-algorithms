@@ -37,7 +37,7 @@ pub(crate) fn compute_z_array(text: &str) -> Vec<usize> {
     z
 }
 
-// Pattern matching with a simple optimization using the Z array
+/// Pattern matching with a simple optimization using the Z array
 pub fn z_pattern_match(text: &str, pattern: &str) -> Vec<usize> {
     if pattern.is_empty() || text.is_empty() {
         return Vec::new();

@@ -1,3 +1,4 @@
+/// Matches `pattern` against `text` using a naive method
 pub fn naive_pattern_match(text: &str, pattern: &str) -> Vec<usize> {
     let patlen = pattern.len();
     let txtlen = text.len();
